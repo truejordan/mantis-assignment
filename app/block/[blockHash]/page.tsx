@@ -5,7 +5,7 @@ import BackButton from "@/components/common/BackButton";
 import { ChevronLeft, ChevronRight } from "untitledui-js-base";
 import { NextPage } from "next";
 import { formatRelativeTime } from "@/utils/RelativeTime";
-import useUTC from "@/utils/useUTC";
+import FormatUTC from "@/utils/FormatUTC";
 import CopyToClip from "@/components/common/CopyToClip";
 import SolanaIcon from "@/components/networks/SolanaIcon";
 
@@ -41,6 +41,7 @@ const BlockDetailPage = async ({
   params: Promise<{ blockHash: string }>;
 }) => {
   const blockHash = (await params).blockHash;
+  
 
   const baseUrl = process.env.VERCEL_URL
     ? `https://${process.env.VERCEL_URL}`
@@ -52,6 +53,7 @@ const BlockDetailPage = async ({
 
   const allBlocks: BlockData[] = await res.json();
   const data = allBlocks.find((block) => block.blockHash === blockHash);
+  const utcDate = data?.timestamp ? FormatUTC(data.timestamp) : "N/A";
 
   if (!data) {
     return notFound();
@@ -91,7 +93,7 @@ const BlockDetailPage = async ({
               <p>{formatRelativeTime(data.timestamp)}</p>
             </BlockCard>
             <BlockCard title="Date (UTC)">
-              <p>{useUTC(data.timestamp)}</p>
+              <p>{utcDate}</p>
             </BlockCard>
             <BlockCard title="Transactions">
               <p>{data.txCount}</p>

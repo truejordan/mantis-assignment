@@ -1,4 +1,4 @@
-const useUTC = (timestamp: string | Date) => {
+const FormatUTC = (timestamp: string | Date) => {
     return new Date(timestamp).toLocaleString("en-US", {
         timeZone: "UTC",
         year: "numeric",
@@ -11,4 +11,4 @@ const useUTC = (timestamp: string | Date) => {
       });
 };
 
-export default useUTC;
+export default FormatUTC;

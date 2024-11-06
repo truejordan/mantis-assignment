@@ -1,8 +1,6 @@
 import React from "react";
 import ExplorerBanner from "@/components/explorer/ExplorerBanner";
-import Search from "@/components/common/Search";
 import Explorer from "@/components/explorer/Explorer";
-import { NextPage } from "next";
 
 interface BlockData {
   blockHash: string;
@@ -16,11 +14,7 @@ interface BlockData {
   solanaPriceUsd: number;
 }
 
-interface ExplorerPageProps {
-  data: BlockData[];
-}
-
-const Home: NextPage<ExplorerPageProps> = async () => {
+const Home = async () => {
   const baseUrl = process.env.VERCEL_URL
     ? `https://${process.env.VERCEL_URL}`
     : "http://localhost:3000";

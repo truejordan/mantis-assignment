@@ -15,9 +15,9 @@ interface BlockData {
 }
 
 const Home = async () => {
-  const baseUrl = process.env.VERCEL_URL
-    ? `https://${process.env.VERCEL_URL}`
-    : "http://localhost:3000";
+  const baseUrl = process.env.VERCEL_ENV === "production"
+  ?` https://${process.env.VERCEL_URL || 'mantis-assignment-43af.vercel.app'}` 
+  : "http://localhost:3000/api/block";
 
   const res = await fetch(`${baseUrl}/api/block`, { cache: "no-store" });
   if (!res.ok) {

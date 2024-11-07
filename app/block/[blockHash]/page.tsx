@@ -43,11 +43,11 @@ const BlockDetailPage = async ({
   const blockHash = (await params).blockHash;
   
 
-  // const baseUrl = process.env.VERCEL_ENV === "production"
-  //   ? '/data/blocks.json'
-  //   : "http://localhost:3000/api/block";
+  const baseUrl = process.env.VERCEL_ENV === "production"
+    ?` https://${process.env.VERCEL_URL}`
+    : "http://localhost:3000/api/block";
 
-  const res = await fetch('/data/blocks.json', {
+  const res = await fetch(`${baseUrl}`, {
     cache: "no-store",
   });
 

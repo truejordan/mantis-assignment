@@ -44,7 +44,7 @@ const BlockDetailPage = async ({
   
 
   const baseUrl = process.env.VERCEL_ENV === "production"
-    ?` https://${process.env.VERCEL_URL || 'mantis-assignment-qlss.vercel.app'}` 
+    ?` https://${process.env.VERCEL_URL || 'mantis-assignment-qlss-nnp3t51c7-jordans-projects-3ab02a35.vercel.app'}` 
     : "http://localhost:3000/api/block";
 
   const res = await fetch(`${baseUrl}`, {

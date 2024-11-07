@@ -43,7 +43,7 @@ const BlockDetailPage = async ({
   const blockHash = (await params).blockHash;
   
 
-  const baseUrl = process.env.VERCEL_URL
+  const baseUrl = process.env.VERCEL_ENV === "production"
     ? `https://${process.env.VERCEL_URL}`
     : "http://localhost:3000";
 
@@ -56,7 +56,7 @@ const BlockDetailPage = async ({
   const utcDate = data?.timestamp ? FormatUTC(data.timestamp) : "N/A";
 
   if (!data) {
-    return notFound();
+    notFound();
   }
 
   return (

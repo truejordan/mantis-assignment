@@ -44,7 +44,7 @@ const BlockDetailPage = async ({
   
 
   const baseUrl = process.env.VERCEL_ENV === "production"
-    ?` https://${process.env.VERCEL_URL}`
+    ?` https://${process.env.VERCEL_URL || "https://to-pass-build.com"}` 
     : "http://localhost:3000/api/block";
 
   const res = await fetch(`${baseUrl}`, {
@@ -57,7 +57,9 @@ const BlockDetailPage = async ({
 
   if (!data) {
     // notFound();
-    return <div className="flex w-full h-screen items-center justify-end">Block not found</div>;
+    return <div className="flex w-full h-screen items-center justify-center">
+      <h1>Not found</h1>
+    </div>;
   }
 
   return (

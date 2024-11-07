@@ -1,5 +1,5 @@
 import React from "react";
-import { notFound } from "next/navigation";
+// import { notFound } from "next/navigation";
 import ExplorerBanner from "@/components/explorer/ExplorerBanner";
 import BackButton from "@/components/common/BackButton";
 import { ChevronLeft, ChevronRight } from "untitledui-js-base";
@@ -43,11 +43,11 @@ const BlockDetailPage = async ({
   const blockHash = (await params).blockHash;
   
 
-  const baseUrl = process.env.VERCEL_ENV === "production"
-    ? '/data/blocks.json'
-    : "http://localhost:3000/api/block";
+  // const baseUrl = process.env.VERCEL_ENV === "production"
+  //   ? '/data/blocks.json'
+  //   : "http://localhost:3000/api/block";
 
-  const res = await fetch(`${baseUrl}`, {
+  const res = await fetch('/data/blocks.json', {
     cache: "no-store",
   });
 
@@ -56,7 +56,8 @@ const BlockDetailPage = async ({
   const utcDate = data?.timestamp ? FormatUTC(data.timestamp) : "N/A";
 
   if (!data) {
-    notFound();
+    // notFound();
+    return <div className="flex w-full h-screen items-center justify-end">Block not found</div>;
   }
 
   return (

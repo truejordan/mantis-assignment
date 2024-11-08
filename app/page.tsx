@@ -20,9 +20,7 @@ const Home = async () => {
 
   const baseUrl =
     process.env.NODE_ENV === "production"
-      ? ` https://${
-          process.env.VERCEL_URL || 'mantis-assignment-43af.vercel.app'
-        }`
+      ? `https://${process.env.VERCEL_URL || 'mantis-assignment-43af.vercel.app'}`
       : "http://localhost:3000";
   console.log("Base URL:", baseUrl);
   console.log("vercel url", process.env.VERCEL_URL)

@@ -18,14 +18,14 @@ const Home = async () => {
   const baseUrl =
     process.env.NODE_ENV === "production"
       ? ` https://${
-          process.env.VERCEL_URL || "mantis-assignment-43af.vercel.app"
+          process.env.VERCEL_URL || 'mantis-assignment-43af.vercel.app'
         }`
       : "http://localhost:3000";
   console.log("Base URL:", baseUrl);
   console.log("VERCEL_ENV:", process.env.NODE_ENV);
   
-  const res = await fetch(`${baseUrl}/api/block`);
-  // const res = await fetch(`${baseUrl}/api/block`, { cache: "no-store" });
+  // const res = await fetch(`${baseUrl}/api/block`);
+  const res = await fetch(`${baseUrl}/api/block`, { cache: "no-store" });
   console.log("Response:", res.status, await res.text());
 
   if (!res.ok) {

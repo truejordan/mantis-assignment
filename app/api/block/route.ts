@@ -4,14 +4,16 @@ import { promises as fs } from 'fs';
 
 export async function GET() {
   try {
-    const filePath = path.join(process.cwd(), 'public', 'data', 'blocks.json');
+    const filePath = path.join(process.cwd(), 'data', 'blocks.json');
+    console.log("Reading file from:", filePath);
     
     const data = await fs.readFile(filePath, 'utf-8');
-    
     const jsonData = JSON.parse(data);
 
+    console.log("Returning JSON data:", jsonData);
     return NextResponse.json(jsonData);
   } catch (error) {
+    console.error("Error in /api/block handler:", error);
     return NextResponse.json({ error: `Failed to fetch data: ${error}` }, { status: 500 });
   }
 }

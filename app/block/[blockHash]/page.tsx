@@ -26,6 +26,8 @@ interface CardProps {
   title?: string;
 }
 
+export const dynamic = 'force-dynamic'
+
 const BlockCard: NextPage<CardProps> = ({ children, title }) => {
   return (
     <div className="flex flex-col py-5 px-6 rounded-3xl justify-center items-center gap-2 border-[1px] border-white/10 text-sm font-medium">

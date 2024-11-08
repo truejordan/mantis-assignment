@@ -14,7 +14,10 @@ interface BlockData {
   solanaPriceUsd: number;
 }
 
+export const dynamic = 'force-dynamic'
+
 const Home = async () => {
+
   const baseUrl =
     process.env.NODE_ENV === "production"
       ? ` https://${
@@ -24,7 +27,6 @@ const Home = async () => {
   console.log("Base URL:", baseUrl);
   console.log("VERCEL_ENV:", process.env.NODE_ENV);
   
-  // const res = await fetch(`${baseUrl}/api/block`);
   const res = await fetch(`${baseUrl}/api/block`, { cache: "no-store" });
   console.log("Response:", res.status, await res.text());
 

@@ -26,25 +26,25 @@ const Home = async () => {
   console.log("vercel url", process.env.VERCEL_URL)
   console.log("VERCEL_ENV:", process.env.NODE_ENV);
   
-  // const res = await fetch(`${baseUrl}/api/block`, { cache: "no-store" });
+  const res = await fetch(`${baseUrl}/api/block`, { cache: "no-store" });
   
-  // if (!res.ok) {
-  //   const errorText = await res.text()
-  //   console.log("Response:", res.status, errorText );
-  //   throw new Error("Failed to fetch data");
-  // }
+  if (!res.ok) {
+    const errorText = await res.text()
+    console.log("Response:", res.status, errorText );
+    throw new Error("Failed to fetch data");
+  }
 
-  try {
-    console.log("Starting fetch to /api/block");
-    const res = await fetch(`${baseUrl}/api/block`, { cache: "no-store" });
+  // try {
+  //   console.log("Starting fetch to /api/block");
+  //   const res = await fetch(`${baseUrl}/api/block`, { cache: "no-store" });
 
-    console.log("Fetch status:", res.status);
+  //   console.log("Fetch status:", res.status);
 
-    if (!res.ok) {
-      const errorText = await res.text();
-      console.error("Fetch failed:", res.status, errorText);
-      throw new Error(`Fetch failed with status: ${res.status}`);
-    }
+  //   if (!res.ok) {
+  //     const errorText = await res.text();
+  //     console.error("Fetch failed:", res.status, errorText);
+  //     throw new Error(`Fetch failed with status: ${res.status}`);
+  //   }
 
   const data: BlockData[] = await res.json();
 
@@ -56,9 +56,9 @@ const Home = async () => {
       </div>
     </div>
   );
-} catch (error) {
-  console.error("Error during fetch:", error);
-  throw error;
-}
+// } catch (error) {
+//   console.error("Error during fetch:", error);
+//   throw error;
+// }
 };
 export default Home;

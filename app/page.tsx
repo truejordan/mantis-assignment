@@ -16,13 +16,13 @@ interface BlockData {
 
 const Home = async () => {
   const baseUrl =
-    process.env.VERCEL_ENV === "production"
+    process.env.NODE_ENV === "production"
       ? ` https://${
           process.env.VERCEL_URL || "mantis-assignment-43af.vercel.app"
         }`
       : "http://localhost:3000";
   console.log("Base URL:", baseUrl);
-  console.log("VERCEL_ENV:", process.env.VERCEL_ENV);
+  console.log("VERCEL_ENV:", process.env.NODE_ENV);
   
   const res = await fetch(`${baseUrl}/api/block`);
   // const res = await fetch(`${baseUrl}/api/block`, { cache: "no-store" });

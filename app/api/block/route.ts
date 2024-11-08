@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
-import path from 'path';
-import { promises as fs } from 'fs';
+// import path from 'path';
+// import { promises as fs } from 'fs';
 import blocks from '../../../data/blocks.json'
 
 export async function GET() {

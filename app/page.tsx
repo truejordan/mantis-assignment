@@ -22,6 +22,7 @@ const Home = async () => {
         }`
       : "http://localhost:3000";
   console.log("Base URL:", baseUrl);
+  console.log("VERCEL_ENV:", process.env.VERCEL_ENV);
   
   const res = await fetch(`${baseUrl}/api/block`);
   // const res = await fetch(`${baseUrl}/api/block`, { cache: "no-store" });
